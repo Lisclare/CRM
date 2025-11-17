@@ -1,0 +1,37 @@
+{
+  "id": "4dbb0090-0b03-4ff6-9931-02c71a445052",
+  "name": "CRM",
+  "publisher": "Lisclare",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "Supports integration to CRM system",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies":  [{
+    "id": "9ab738bc-f851-41ff-9a68-79b8e6a4f5e0",
+    "name": "Lisclare",
+    "publisher": "Lisclare",
+    "version": "1.1.0.0"     
+}],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "22.0.0.0",
+  "idRanges": [
+    {
+      "from": 50620,
+      "to": 50639
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "12.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
