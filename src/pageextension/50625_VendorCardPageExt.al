@@ -4,7 +4,7 @@ pageextension 50625 "Vendor Card Page Ext" extends "Vendor Card"
     {
         addlast(General)
         {
-            field("Synchronize"; Rec.Synchronize)
+            field("Synchronize"; Rec.Synchronise)
             {
                 ApplicationArea = All;
                 Importance = Additional;

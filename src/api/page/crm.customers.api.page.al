@@ -164,59 +164,6 @@ page 50620 "CRM Customers"
                         RegisterFieldSet(Rec.FieldNo("Credit Limit (LCY)"));
                     end;
                 }
-                field(taxLiable; Rec."Tax Liable")
-                {
-                    Caption = 'Tax Liable';
-
-                    trigger OnValidate()
-                    begin
-                        RegisterFieldSet(Rec.FieldNo("Tax Liable"));
-                    end;
-                }
-                field(taxAreaId; Rec."Tax Area ID")
-                {
-                    Caption = 'Tax Area Id';
-
-                    trigger OnValidate()
-                    var
-                        GeneralLedgerSetup: Record "General Ledger Setup";
-                    begin
-                        RegisterFieldSet(Rec.FieldNo("Tax Area ID"));
-
-                        if not GeneralLedgerSetup.UseVat() then
-                            RegisterFieldSet(Rec.FieldNo("Tax Area Code"))
-                        else
-                            RegisterFieldSet(Rec.FieldNo("VAT Bus. Posting Group"));
-                    end;
-                }
-                field(taxAreaDisplayName; TaxAreaDisplayNameGlobal)
-                {
-                    Caption = 'Tax Area Display Name';
-                    Editable = false;
-                }
-                field(taxRegistrationNumber; TaxRegistrationNumber)
-                {
-                    Caption = 'Tax Registration No.';
-
-                    trigger OnValidate()
-                    var
-                        EnterpriseNoFieldRef: FieldRef;
-                    begin
-                        if IsEnterpriseNumber(EnterpriseNoFieldRef) then begin
-                            if (Rec."Country/Region Code" <> BECountryCodeLbl) and (Rec."Country/Region Code" <> '') then begin
-                                Rec.Validate("VAT Registration No.", TaxRegistrationNumber);
-                                RegisterFieldSet(Rec.FieldNo("VAT Registration No."));
-                            end else begin
-                                EnterpriseNoFieldRef.Validate(TaxRegistrationNumber);
-                                EnterpriseNoFieldRef.Record().SetTable(Rec);
-                                RegisterFieldSet(Rec.FieldNo("VAT Registration No."));
-                            end;
-                        end else begin
-                            Rec.Validate("VAT Registration No.", TaxRegistrationNumber);
-                            RegisterFieldSet(Rec.FieldNo("VAT Registration No."));
-                        end;
-                    end;
-                }
                 field(currencyId; Rec."Currency Id")
                 {
                     Caption = 'Currency Id';
@@ -284,44 +231,6 @@ page 50620 "CRM Customers"
                         RegisterFieldSet(Rec.FieldNo("Payment Terms Code"));
                     end;
                 }
-                field(shipmentMethodId; Rec."Shipment Method Id")
-                {
-                    Caption = 'Shipment Method Id';
-
-                    trigger OnValidate()
-                    begin
-                        if Rec."Shipment Method Id" = BlankGUID then
-                            Rec."Shipment Method Code" := ''
-                        else begin
-                            if not ShipmentMethod.GetBySystemId(Rec."Shipment Method Id") then
-                                Error(ShipmentMethodIdDoesNotMatchAShipmentMethodErr);
-
-                            Rec."Shipment Method Code" := ShipmentMethod.Code;
-                        end;
-
-                        RegisterFieldSet(Rec.FieldNo("Shipment Method Id"));
-                        RegisterFieldSet(Rec.FieldNo("Shipment Method Code"));
-                    end;
-                }
-                field(paymentMethodId; Rec."Payment Method Id")
-                {
-                    Caption = 'Payment Method Id';
-
-                    trigger OnValidate()
-                    begin
-                        if Rec."Payment Method Id" = BlankGUID then
-                            Rec."Payment Method Code" := ''
-                        else begin
-                            if not PaymentMethod.GetBySystemId(Rec."Payment Method Id") then
-                                Error(PaymentMethodIdDoesNotMatchAPaymentMethodErr);
-
-                            Rec."Payment Method Code" := PaymentMethod.Code;
-                        end;
-
-                        RegisterFieldSet(Rec.FieldNo("Payment Method Id"));
-                        RegisterFieldSet(Rec.FieldNo("Payment Method Code"));
-                    end;
-                }
                 field(blocked; Rec.Blocked)
                 {
                     Caption = 'Blocked';
@@ -331,7 +240,7 @@ page 50620 "CRM Customers"
                         RegisterFieldSet(Rec.FieldNo(Blocked));
                     end;
                 }
-                field(synchronised; Rec.Synchronise)
+                field(synchronise; Rec.Synchronise)
                 {
                     Caption = 'Synchronise';
 

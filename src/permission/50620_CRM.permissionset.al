@@ -5,5 +5,6 @@ permissionset 50620 "LisclareCRM"
 
     Permissions =
         tabledata Ownership = RIMD,
-        tabledata Industry = RIMD;
+        tabledata Industry = RIMD,
+        tabledata "Debug Log" = RIMD;
 }
