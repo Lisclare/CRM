@@ -4,7 +4,7 @@ pageextension 50627 "Item Card Page Ext" extends "Item Card"
     {
         addlast(Item)
         {
-            field("Synchronize"; Rec.Synchronize)
+            field("Synchronize"; Rec.Synchronise)
             {
                 ApplicationArea = All;
                 Importance = Additional;

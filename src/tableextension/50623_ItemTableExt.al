@@ -2,9 +2,9 @@ tableextension 50623 "Item Table Ext" extends Item
 {
     fields
     {
-        field(50620; "Synchronize"; Boolean)
+        field(50620; "Synchronise"; Boolean)
         {
-            Caption = 'Synchronize';
+            Caption = 'Synchronise';
             DataClassification = CustomerContent;
             InitValue = false;
         }

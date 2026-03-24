@@ -29,9 +29,13 @@ tableextension 50620 "Customer Table Ext" extends Customer
         }
     }
 
-    trigger OnDelete()
-    begin
-        if "Synchronise" then
-            Error('Cannot delete Customer %1 because "Synchronise" is true', "No.");
-    end;
+    // Moved from table extension to page extension to prevent user deletion but allow programmatic deletion
+    /*
+        trigger OnDelete()
+        begin
+            if "Created by CRM" then
+                Error('Customer %1 was created by CRM and must be deleted from the CRM system', "No.");
+        end;
+    // Moved from table extension to page extension to prevent user deletion but allow programmatic deletion 
+    */
 }
