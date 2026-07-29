@@ -11,6 +11,13 @@ pageextension 50624 "Customer Card Page Ext" extends "Customer Card"
                 ToolTip = 'Specifies whether this customer was created by CRM.';
                 Editable = false; // Lock so it only can be changed by API
             }
+            field("Synchronise"; Rec.Synchronise)
+            {
+                Caption = 'Synchronise with CRM';
+                ApplicationArea = All;
+                Importance = Standard;
+                ToolTip = 'Specifies if this customer will be synchronised with the CRM system.';
+            }
             field("Ownership"; Rec.Ownership)
             {
                 ApplicationArea = All;
@@ -24,20 +31,17 @@ pageextension 50624 "Customer Card Page Ext" extends "Customer Card"
                 ToolTip = 'Specifies the industry type of this customer.';
             }
         }
-        addbefore(Statistics)
-        {
-            group("CRM Integration")
-            {
-                Caption = 'CRM Integration';
-
-                field("Synchronise"; Rec.Synchronise)
+        // Sychronise Field moved to top of page to make it more visible and accessible for users. 
+        /*
+                addbefore(Statistics)
                 {
-                    ApplicationArea = All;
-                    Importance = Standard;
-                    ToolTip = 'Specifies if this customer has been synchronised with the CRM system.';
+                    group("CRM Integration")
+                    {
+                        Caption = 'CRM Integration';
+
+                    }
                 }
-            }
-        }
+        */
         // Field used to hold billing info from CRM
         modify("Name 2")
         {

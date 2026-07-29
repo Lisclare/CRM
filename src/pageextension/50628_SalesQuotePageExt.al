@@ -2,7 +2,7 @@ pageextension 50628 "Sales Quote Page Ext" extends "Sales Quote"
 {
     layout
     {
-        addafter(Status)
+        addafter("Sell-to Customer Name")
         {
             field("Created by CRM"; Rec."Created by CRM")
             {
@@ -11,6 +11,14 @@ pageextension 50628 "Sales Quote Page Ext" extends "Sales Quote"
                 ToolTip = 'Specifies whether this customer was created by CRM.';
                 Editable = false; // Lock so it only can be changed by API
             }
+            field("Synchronise"; Rec.Synchronise)
+            {
+                Caption = 'Synchronise with CRM';
+                ApplicationArea = All;
+                Importance = Standard;
+                ToolTip = 'Specifies if this customer will be synchronised with the CRM system.';
+            }
+
         }
         addafter("Work Description")
         {
@@ -25,17 +33,14 @@ pageextension 50628 "Sales Quote Page Ext" extends "Sales Quote"
 
         addafter("Foreign Trade")
         {
-            group("CRM Integration")
-            {
-                Caption = 'CRM Integration';
+            // Sychronise Field moved to top of page to make it more visible and accessible for users. 
+            /*
+                        group("CRM Integration")
+                        {
+                            Caption = 'CRM Integration';
 
-                field("Synchronise"; Rec.Synchronise)
-                {
-                    ApplicationArea = All;
-                    Importance = Standard;
-                    ToolTip = 'Specifies if this customer has been synchronised with the CRM system.';
-                }
-            }
+                        }
+            */
         }
     }
 }
